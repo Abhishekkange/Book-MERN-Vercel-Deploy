@@ -22,15 +22,20 @@ const Login = () => {
     };
 
     try {
-      const response = await axios.post('https://book-review-platform-mern-ez8c.vercel.app/api/v1/login', data);
-      console.log('Response:', response.data);
+      const response = await axios.post('https://book-review-platform-mern.vercel.app/api/v1/login', data);
+  
       if (response.data.type === "JWT") {
         localStorage.setItem('JWT', response.data.message);
         alert("Login successful");
         navigate('/');
       }
+      else{
+
+        alert("Invalid credentials");
+      }
     } catch (error) {
       console.error('There was an error!', error);
+      alert("Login Failed");
     }
   };
 

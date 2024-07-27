@@ -10,7 +10,7 @@ const Reviews = () => {
 
   const fetchBooks = async (page = 1) => {
     try {
-      const response = await axios.get(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/books?page=${page}&limit=6`);
+      const response = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/books?page=${page}&limit=6`);
       setBooks(response.data.books);
       setTotalPages(response.data.totalPages);
       setCurrentPage(page);
@@ -34,7 +34,7 @@ const Reviews = () => {
       }
       else{
 
-        const response = await axios.get(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/searchBook/${keyword}`);
+        const response = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/searchBook/${keyword}`);
       
         setBooks(response.data.message);
         setTotalPages(1); // Assuming search results do not need pagination

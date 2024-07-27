@@ -20,7 +20,7 @@ const Profile = () => {
       const JWT = localStorage.getItem('JWT');
       if (JWT) {
         try {
-          const response = await axios.get(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/verifyJwtToken/${JWT}`);
+          const response = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/verifyJwtToken/${JWT}`);
           setProfile({
             username: response.data.message.username,
             email: response.data.message.email
@@ -39,7 +39,7 @@ const Profile = () => {
     const fetchReviews = async (id) => {
       if (id != null) {
         try {
-          const reviewsResponse = await axios.get(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/reviews/${id}`);
+          const reviewsResponse = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/reviews/${id}`);
           setReviews(reviewsResponse.data);
         } catch (error) {
           console.error('Error fetching reviews:', error);
@@ -66,11 +66,11 @@ const Profile = () => {
     const JWT = localStorage.getItem('JWT');
     if (JWT) {
       try {
-        const response = await axios.get(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/verifyJwtToken/${JWT}`);
+        const response = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/verifyJwtToken/${JWT}`);
         const userId = response.data.message.id;
 
         try {
-          await axios.put(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/updateProfile/${userId}`, profile);
+          await axios.put(`https://book-review-platform-mern.vercel.app/api/v1/updateProfile/${userId}`, profile);
           setEditMode(false);
           alert('Profile updated successfully');
         } catch (error) {

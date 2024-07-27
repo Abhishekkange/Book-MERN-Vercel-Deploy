@@ -42,22 +42,22 @@ const Register = () => {
     };
 
     try {
-      const response = await axios.post('https://book-review-platform-mern-ez8c.vercel.app/api/v1/register', data);
+      const response = await axios.post('https://book-review-platform-mern.vercel.app/api/v1/register', data);
       alert(response.data.message);
       if (response.data.message === "Registered Successfully") {
         try {
-          const loginResponse = await axios.post('https://book-review-platform-mern-ez8c.vercel.app/api/v1/login', data);
+          const loginResponse = await axios.post('https://book-review-platform-mern.vercel.app/api/v1/login', data);
           if (loginResponse.data.type === "JWT") {
             localStorage.setItem('JWT', loginResponse.data.message);
             navigate('/');
           }
         } catch (error) {
-          console.error('There was an error!', error);
+        
           alert("Try Login Again");
         }
       }
     } catch (error) {
-      console.error('There was an error!', error);
+     
       alert('Registration failed. Please try again.');
     }
   };

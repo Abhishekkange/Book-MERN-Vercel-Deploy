@@ -27,8 +27,8 @@ const BookDetails = ({ cover, title, author, description, id }) => {
       //GET ID FROM JWT
 
       try {
-        const response = await axios.get(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/verifyJwtToken/${JWT}`);
-        console.log('Response:', response);
+        const response = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/verifyJwtToken/${JWT}`);
+        ('Response:', response);
 
         const userId = response.data.message.id;     
         const addReviewData = {
@@ -40,11 +40,11 @@ const BookDetails = ({ cover, title, author, description, id }) => {
         };
   
         try {
-          const response = await axios.post('https://book-review-platform-mern-ez8c.vercel.app/api/v1/addReview', addReviewData);
-          console.log('Response:', response.data);
+          const response = await axios.post('https://book-review-platform-mern.vercel.app/api/v1/addReview', addReviewData);
+          ('Response:', response.data);
           if (response.data.type === "JWT") {
             localStorage.setItem('JWT', JSON.stringify(response.data.message));
-            console.log('stored in localStorage');
+            ('stored in localStorage');
           }
         } catch (error) {
           console.error('There was an error!', error);

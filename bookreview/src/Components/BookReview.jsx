@@ -27,12 +27,12 @@ const BookReview = ({ book, reviews }) => {
         const JWT = localStorage.getItem('JWT');
         if (JWT) {
             try {
-                const response = await axios.get(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/verifyJwtToken/${JWT}`);
+                const response = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/verifyJwtToken/${JWT}`);
                 const userId = response.data.message.id;
 
                 try {
                     await axios.put(
-                        `https://book-review-platform-mern-ez8c.vercel.app/api/v1/editReview/${book._id}/${editReviewId}`,
+                        `https://book-review-platform-mern.vercel.app/api/v1/editReview/${book._id}/${editReviewId}`,
                         {
                             userId: userId,
                             reviewText: reviewText,
@@ -64,19 +64,19 @@ const BookReview = ({ book, reviews }) => {
         const JWT = localStorage.getItem('JWT');
         if (JWT) {
             try {
-                const response = await axios.get(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/verifyJwtToken/${JWT}`);
+                const response = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/verifyJwtToken/${JWT}`);
                 const userId = response.data.message.id;
 
                 try {
                     await axios.delete(
-                        `https://book-review-platform-mern-ez8c.vercel.app/api/v1/deleteReview/${book._id}/${selectedReview._id}`,
+                        `https://book-review-platform-mern.vercel.app/api/v1/deleteReview/${book._id}/${selectedReview._id}`,
                         { data: { userId: userId } }
                     );
                     setShowDeleteModal(false);
-                    window.location.reload(); // Refresh to see updated reviews
+                    window.location.reload(); 
                 } catch (error) {
-                    console.error('Error deleting review:', error);
-                    alert('Failed to delete review: ' + error.message);
+              
+                    alert("You can delete other's reviews");
                 }
 
             } catch (error) {
@@ -98,13 +98,15 @@ const BookReview = ({ book, reviews }) => {
         const JWT = localStorage.getItem('JWT');
         if (JWT) {
             try {
-                const response = await axios.get(`https://book-review-platform-mern-ez8c.vercel.app/api/v1/verifyJwtToken/${JWT}`);
+                const response = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/verifyJwtToken/${JWT}`);
                 const userId = response.data.message.id;
-
+            
                 try {
                     await axios.post(
-                        `https://book-review-platform-mern-ez8c.vercel.app/api/v1/addReview/${book._id}`,
+                        `https://book-review-platform-mern.vercel.app/api/v1/addReview`,
                         {
+                            title:book.title,
+                            author:book.author,
                             userId: userId,
                             reviewText: reviewText,
                             rating: rating
@@ -113,8 +115,7 @@ const BookReview = ({ book, reviews }) => {
                     setShowAddModal(false);
                     window.location.reload(); // Refresh to see new review
                 } catch (error) {
-                    console.error('Error adding review:', error);
-                    alert('Failed to add review: ' + error.message);
+                    alert('Add Review between 1 to 5');
                 }
 
             } catch (error) {
