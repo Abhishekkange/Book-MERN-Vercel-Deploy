@@ -13,7 +13,7 @@ function BookPage() {
         const fetchBookDetails = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get(`http://localhost:4000/api/v1/book/${id}`);
+                const response = await axios.get(`https://book-review-platform-mern.vercel.app/api/v1/book/${id}`);
                 setBook(response.data.message); 
                 
             } catch (err) {
