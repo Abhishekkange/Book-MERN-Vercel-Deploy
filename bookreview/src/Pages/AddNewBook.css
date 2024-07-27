@@ -1,0 +1,26 @@
+/* AddBookReview.css */
+.card {
+    border-radius: 10px;
+    height: 80vh;
+    overflow-y: auto;
+    width: 700px;
+  }
+  
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  h3 {
+    text-align: left;
+  }
+  
+  .form-label {
+    text-align: left;
+  }
+  
+  .mt-auto {
+    margin-top: auto; /* Push the button to the bottom */
+  }
+  
